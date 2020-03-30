@@ -11,7 +11,7 @@ $texto = $_SESSION['id'] . '#' .$titulo . '#' . $categoria . '#' .  $descricao .
 
 
 //Abrindo o arquivo
-$arquivo = fopen('arquivo.hd', 'a'); //le o arquivo indicado, se n existir ele cria..
+$arquivo = fopen('../../app_help_desk/arquivo.hd', 'a'); //le o arquivo indicado, se n existir ele cria..
 //parametro 'a' abre o arquivo para escrita..
 
 //escrevendo

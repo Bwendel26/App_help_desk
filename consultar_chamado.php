@@ -3,7 +3,7 @@
 <?php
   //abrir arquivo.hd
 
-  $arquivo = fopen('arquivo.hd', 'r'); //parametro 'r' para leitura
+  $arquivo = fopen('../../app_help_desk/arquivo.hd', 'r'); //parametro 'r' para leitura
 
   $chamados = [];
 
@@ -11,6 +11,17 @@
   while(!feof($arquivo)) { //"feof" procura o end of file.
     //percore linha por linha do arquivo, procurando o eof
     $registro = fgets($arquivo);
+    //dividindo a string em strings
+    $registro_detalhes = explode('#', $registro);
+
+    //desafio
+    if($_SESSION['perfil_id'] == 2){
+      if($_SESSION['id'] != $registro_detalhes[0]) {
+        continue;
+      }
+    }
+    //
+
     $chamados[] = $registro;
   }
   //fechamento do arquivo
@@ -64,18 +75,18 @@
                   $chamado_dados = explode('#', $chamado); //cria um array
 
                   //
-                  if($_SESSION['perfil_id'] == 2) {
-                    //so vamos exibir se for criado pelo user
-                    if($_SESSION['id'] != $chamado_dados[0]) {
-                      continue; // para o foreach seguir para proxima iteração
-                      //desconsidera tudo apos o continue
-                    }
-                  }
+                  // if($_SESSION['perfil_id'] == 2) {
+                  //   //so vamos exibir se for criado pelo user
+                  //   if($_SESSION['id'] != $chamado_dados[0]) {
+                  //     continue; // para o foreach seguir para proxima iteração
+                  //     //desconsidera tudo apos o continue
+                  //   }
+                  // }
 
                   if(count($chamado_dados) < 3) {
                     continue;
                     }
-                ?>
+              ?>
 
                   <div class="card mb-3 bg-light">
                     <div class="card-body">
@@ -86,10 +97,10 @@
                     </div>
                   </div>
 
-                <?php
-                  } 
-                ?>
-                
+              <?php
+                } 
+              ?>
+
               <div class="row mt-5">
                 <div class="col-6">
                 <a class="btn btn-lg btn-warning btn-block" href="home.php">Voltar</a>
