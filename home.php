@@ -1,4 +1,7 @@
-<?php require_once 'validador_acesso.php'; ?>
+<?php
+  require_once 'validador_acesso.php';
+  //validador_acesso.php já executa o session_start()
+?>
 
 <html>
   <head>
